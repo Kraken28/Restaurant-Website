@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="favicon" href="Images/favicon.jpg">
+    <style>
+@font-face {
+	font-family: 'Suez One';
+	src: url(Fonts/SuezOne-Regular.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Suez One', Arial;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: navajowhite;
+}
+
+article {padding-top: 6em; font-size: 2em; padding-left: 1em;}
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 1.3rem 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+}
+
+.header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(50px);
+	z-index: -1;
+}
+
+.header::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+	transition: 0.5s;
+}
+
+.header:hover::after {
+	left: 100%;
+
+}
+
+.logo {
+	font-size: 2rem;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.navbar a {
+	font-size: 1.15rem;
+	color: orange;
+	text-decoration: none;
+	font-weight: 500;
+	margin-left: 2.5rem;
+}
+
+#check {
+	display: none;
+}
+
+
+
+.icons {
+	position: absolute;
+	right: 5%;
+	font-size: 2.8rem;
+	color: #fff;
+	cursor: pointer;
+	display: none;
+}
+
+span {
+	color: orange;
+}
+
+.text-box {
+	width: 90%;
+	color: orange;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+.text-box h1 {
+	font-size: 62px;
+}
+
+.text-box p {
+	margin: 10px 0 40px;
+	font-size: 17px;
+	color: #fff;
+}
+
+/*BREAKPOINTS*/
+@media (max-width: 992px) {
+	.header {
+		padding: 1.3rem 5%;
+	}
+}
+
+@media (max-width: 768px) {
+	.icons {
+		display: inline-flex;
+	}
+
+	#check:checked~.icons #menu-icon {
+		display: none;
+
+	}
+
+	#check:checked~.icons #close-icon {
+		display: block;
+		
+	}
+
+	.icons #close-icon {
+		display: none;
+
+	}
+
+	.navbar {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 0;
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(50px);
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		transition: 0.3s ease;
+	}
+
+	#check:checked~.navbar {
+		height: 17.7rem;
+		
+	}
+
+	.navbar a {
+		display: block;
+		font-size: 1.1rem;
+		margin: 1.5rem 0;
+		text-align: center;
+		transform: translateY(-50px);
+		opacity: 0;
+		transition: 0.3s ease;
+	}
+	#check:checked~.navbar a {
+		transform: translateY(0);
+		opacity: 1;
+		transition-delay: calc(.15s * var(--i));
+	}
+}
+    </style>
+</head>
+<body>
+    <section class="section1">
+    	<header class="header">
+            <a href="#" class="logo"><span>F</span>lavour <span>F</span>usion</a>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="icons">
+        		<i class='bx bx-menu' id="menu-icon"></i>
+            	<i class='bx bxs-x-circle' id="close-icon"></i>
+            </label>
+
+            <nav class="navbar">
+                    <a href="index.html" style="--i:0;">Return to Main Website</a>
+                    
+            </nav>
+		</section>
+
+    <article>
+        <h2>The data you entered:</h2>
+        <script>
+            var s = new URLSearchParams(window.location.search);
+
+            var a = (s.get("Name"));
+            var b = (s.get("Email"));
+            var c = (s.get("Subject"));
+            var d = (s.get("Message"));
+
+            document.write("Name: " + a + "</br>");
+            document.write("Email: " + b + "</br>");
+            document.write("Subject: " + c + "</br>");
+            document.write("Message: " + d);
+        </script>
+    </article>
+</body>
+</html>

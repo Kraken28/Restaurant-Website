@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Menu</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="favicon" href="Images/favicon.jpg">
+	
+	<style>
+@font-face {
+	font-family: 'Suez One';
+	src: url(Fonts/SuezOne-Regular.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Suez One', Arial;
+	box-sizing: border-box;
+}
+
+
+body {
+	background-color: navajowhite;
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 1.3rem 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+}
+
+.header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(50px);
+	z-index: -1;
+}
+
+.header::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+	transition: 0.5s;
+}
+
+.header:hover::after {
+	left: 100%;
+
+}
+
+.logo {
+	font-size: 2rem;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.navbar a {
+	font-size: 1.15rem;
+	color: orange;
+	text-decoration: none;
+	font-weight: 500;
+	margin-left: 2.5rem;
+}
+
+#check {
+	display: none;
+}
+
+
+
+.icons {
+	position: absolute;
+	right: 5%;
+	font-size: 2.8rem;
+	color: #fff;
+	cursor: pointer;
+	display: none;
+}
+
+span {
+	color: orange;
+}
+
+.text-box {
+	width: 90%;
+	color: orange;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+
+.text-box h1 {
+	font-size: 62px;
+}
+
+.text-box p {
+	margin: 10px 0 40px;
+	font-size: 17px;
+	color: #fff;
+}
+
+/*BREAKPOINTS*/
+@media (max-width: 992px) {
+	.header {
+		padding: 1.3rem 5%;
+	}
+}
+
+@media (max-width: 768px) {
+	.icons {
+		display: inline-flex;
+	}
+
+	#check:checked~.icons #menu-icon {
+		display: none;
+
+	}
+
+	#check:checked~.icons #close-icon {
+		display: block;
+		
+	}
+
+	.icons #close-icon {
+		display: none;
+
+	}
+
+	.navbar {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 0;
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(50px);
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		transition: 0.3s ease;
+	}
+
+	#check:checked~.navbar {
+		height: 17.7rem;
+		
+	}
+
+	.navbar a {
+		display: block;
+		font-size: 1.1rem;
+		margin: 1.5rem 0;
+		text-align: center;
+		transform: translateY(-50px);
+		opacity: 0;
+		transition: 0.3s ease;
+	}
+	#check:checked~.navbar a {
+		transform: translateY(0);
+		opacity: 1;
+		transition-delay: calc(.15s * var(--i));
+	}
+}
+
+.section3 {
+	background-color: navajowhite;
+}
+
+.section3 .menu {
+	padding-bottom: 80px;
+	text-align: center;
+	font-size: 85px;
+	font-weight: bold;
+	color: orange;
+	padding-top: 150px;
+
+}
+
+.section3 .foods {
+	text-align: center;
+	font-size: 45px;
+	font-weight: bold;
+	color: orangered;
+	padding-top: 100px;
+}
+
+.section3 {
+	width: 100%;
+	display: flex;
+	margin-bottom: 100px;
+	justify-content: center;
+
+}
+
+.section3 .list-items {
+	position: relative;
+	padding-bottom: 200px;
+}
+
+.section3 .list-items h3 {
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	padding-top: 100px;
+	text-align: center;
+
+}
+
+.section3 .list-items .card-list {
+	display: inline-block;
+	grid-template-columns: repeat(6, 1fr);
+	
+}
+
+.section3 .card-list .card {
+	width: 230px;
+	height: 290x;
+	display: inline-block;
+	padding: 15px;
+	margin: 3em;
+	outline: 2px solid #faad96;
+	border-radius: 10px;
+	position: relative;
+	background-color: #fff;
+}
+
+.section3 .card-list .card img {
+	width: 180px;
+	height: auto;
+	bottom: 180px;
+	left: 25px;
+	object-fit: cover;
+	object-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+	box-shadow: 0 20px 20px black;
+	border-radius: 50px;
+}
+
+.section3 .card-list .card .food-title {
+	margin-top: 40px;
+
+}
+
+.section3 .card .desc-food p {
+	font-size: 13px;
+	text-align: center;
+	font-weight: 500;
+	margin-bottom: 20px;
+
+}
+
+.section3 .card .price {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.section3 .card .price span .plus-icon {
+	color: #ff511c;
+	font-size: 20px;
+	cursor: pointer;
+}
+/*BREAKPOINTS*/
+/*Media Screen for section 3 (Food Cards)*/
+@media (max-width: 768px) {
+	.section3 .list-items {
+	text-align: center;
+	position: relative;
+	padding-bottom: 200px;
+}
+}
+
+/*Media Screen for section 3 (Food Cards)*/
+@media (max-width: 4000px) {
+	.section3 .list-items {
+	text-align: center;
+	position: relative;
+	padding-bottom: 200px;
+
+}
+}
+
+footer {
+	background: #383848;
+	text-align: center;
+	color: #fff;
+	padding: 15px 0;
+	font-size: 14px;
+}
+
+::-webkit-scrollbar {width: 10px;}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 20px;
+	background-color: #ff511c;
+}
+</style>
+
+</head>
+<body>
+	<section class="section1">
+    	<header class="header">
+            <a href="#" class="logo"><span>F</span>lavour <span>F</span>usion</a>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="icons">
+        		<i class='bx bx-menu' id="menu-icon"></i>
+            	<i class='bx bxs-x-circle' id="close-icon"></i>
+            </label>
+
+            <nav class="navbar">
+                    <a href="index.html" style="--i:0;">Return to Main Website</a>
+                    
+            </nav>
+		</section>
+	<section id="gallery" class="section3">
+		<div class="list-items">
+			<h1 class="menu">Menu</h1>
+			<div class="card-list">
+					<p class="foods">Burgers</p>
+					<div class="card">
+						<img src="Images/beef.jpeg">
+						<div class="food-title">
+							<h3>Beef Burger</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 280Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 20</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/chicken.jpeg">
+						<div class="food-title">
+							<h3>Chicken Burger</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 260Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 17</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/mushroom.jpeg">
+						<div class="food-title">
+							<h3>Mushroom Burger</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 100Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 15</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/double-beef.jpeg">
+						<div class="food-title">
+							<h3>Double Beef Burger</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 420Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 24</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+
+					<p class="foods">Wings</p>
+					<div class="card">
+						<img src="Images/wings.jpg">
+						<div class="food-title">
+							<h3>Chicken Wings</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 200Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 15</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/buffalo-wings.jpeg">
+						<div class="food-title">
+							<h3>Buffalo Wings</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 230Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 18</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/spicy-wings.jpeg">
+						<div class="food-title">
+							<h3>Spicy Chicken Wings</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 220Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 17</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/buffalo-spicy.jpg">
+						<div class="food-title">
+							<h3>Spicy Buffalo Wings</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 250Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 20</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+
+					<p class="foods">Pizzas</p>
+					<div class="card">
+						<img src="Images/veg-pizza.webp">
+						<div class="food-title">
+							<h3>Vegetable Pizza</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 600Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 40</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/pep-pizza.jpg">
+						<div class="food-title">
+							<h3>Pepperoni Pizza</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 500Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 30</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/cheese-pizza.webp">
+						<div class="food-title">
+							<h3>Cheese Pizza</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 400Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 25</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/jal-pizza.jpg">
+						<div class="food-title">
+							<h3>Jalapeño Pizza</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 430Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 35</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<p class="foods">Fries</p>
+					<div class="card">
+						<img src="Images/curly-fries.jpg">
+						<div class="food-title">
+							<h3>Curly Fries</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 400Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 10</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/french-fries.jpg">
+						<div class="food-title">
+							<h3>French Fries</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 310Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 5</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/wedges.jpg">
+						<div class="food-title">
+							<h3>Wedges</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 380Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 10</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/sweet-fries.jpg">
+						<div class="food-title">
+							<h3>Sweet Potato Fries</h3>
+						</div>
+						<div class="desc-food">
+							<p>Calories: 340Kcal</p>
+						</div>
+						<div class="price">
+							<span>SR 5</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<p class="foods">Beverages</p>
+					<div class="card">
+						<img src="Images/water.jpg">
+						<div class="food-title">
+							<h3>Water</h3>
+						</div>
+						<div class="desc-food">
+							
+						</div>
+						<div class="price">
+							<span>SR 1</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/coca.jpg">
+						<div class="food-title">
+							<h3>Coca Cola</h3>
+						</div>
+						<div class="desc-food">
+						</div>
+						<div class="price">
+							<span>SR 2.5</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/pepsi.jpg">
+						<div class="food-title">
+							<h3>Pepsi</h3>
+						</div>
+						<div class="desc-food">
+						</div>
+						<div class="price">
+							<span>SR 3</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+					<div class="card">
+						<img src="Images/ice-tea.jpg">
+						<div class="food-title">
+							<h3>Peach Ice Tea</h3>
+						</div>
+						<div class="desc-food">
+						</div>
+						<div class="price">
+							<span>SR 3</span><span><i class='bx bxs-plus-circle plus-icon'></i></span>
+						</div>
+					</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<footer>
+		<p>Copyright &copy; 2023 All rights reserved | Made By: Sajad Almatrood &amp; Riyadh Alghamdi</p>
+    </footer>
+    
+</body>
+</html>
